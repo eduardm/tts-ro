@@ -157,31 +157,11 @@
   TTS-v2, Epoch 15 evaluation<br>
 </p>
 
-<div class="summary">
-  <h2>Overall Results</h2>
-  <table>
-    <thead>
-      <tr><th>Voice</th><th>Avg WER</th><th>Quality</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Marioara</td><td class="wer wer-good">21.5%</td><td>Good</td></tr>
-      <tr><td>Lacramioara</td><td class="wer wer-good">24.8%</td><td>Good</td></tr>
-      <tr><td>Costel</td><td class="wer wer-good">28.0%</td><td>Good</td></tr>
-      <tr><td>Georgel</td><td class="wer wer-good">28.1%</td><td>Good</td></tr>
-      <tr><td>Dorel</td><td class="wer wer-working">33.5%</td><td>Working</td></tr>
-      <tr><td>Overall</td><td class="wer wer-good">27.2%</td><td>Good</td></tr>
-    </tbody>
-  </table>
-</div>
+
 
 <div id="voices"></div>
 
-<div class="method-note">
-  <strong>How WER is measured:</strong> Each sentence is fed to XTTS-v2 which generates audio.
-  The audio is then transcribed by <a href="https://github.com/openai/whisper">Whisper large-v3</a> and compared word-by-word
-  against the original input. WER = edit_distance / reference_words. Lower is better.
-  &lt;30% = Good, 30-50% = Working, &gt;50% = Needs training.
-</div>
+
 
 <script>
 const VOICE_NAMES = {
