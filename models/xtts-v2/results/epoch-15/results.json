@@ -1,0 +1,405 @@
+{
+  "checkpoint": "best_model_epoch15.pth",
+  "whisper_model": "large-v3",
+  "temperature": 0.7,
+  "num_voices": 5,
+  "num_sentences": 8,
+  "voices": [
+    {
+      "voice": "speaker_female_adr",
+      "reference_wav": "reference-voices/speaker_female_adr.wav",
+      "average_wer": 0.2482,
+      "sentences": [
+        {
+          "sentence_idx": 0,
+          "original_text": "Bună ziua, mă numesc Alexandru și sunt din București.",
+          "transcription": "Bună ziua, mă numesc Alexandru Conș, sunt din București.",
+          "wer": 0.1111,
+          "duration_s": 3.85,
+          "generation_time_s": 0.95,
+          "wav_file": "speaker_female_adr/sample_00.wav"
+        },
+        {
+          "sentence_idx": 1,
+          "original_text": "România este o țară frumoasă cu munți înalți și câmpii întinse.",
+          "transcription": "România este o conoară frumoasă cu mâncări călmei în alcări și câmpii întinse.",
+          "wer": 0.4545,
+          "duration_s": 5.33,
+          "generation_time_s": 0.91,
+          "wav_file": "speaker_female_adr/sample_01.wav"
+        },
+        {
+          "sentence_idx": 2,
+          "original_text": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.",
+          "transcription": "Într-o diminea cândă de toamnă, frunzele cădeau ucnori pe aleea din parc.",
+          "wer": 0.2727,
+          "duration_s": 4.31,
+          "generation_time_s": 0.74,
+          "wav_file": "speaker_female_adr/sample_02.wav"
+        },
+        {
+          "sentence_idx": 3,
+          "original_text": "Științele exacte și cele umaniste se completează reciproc.",
+          "transcription": "condiindă la exacte concile umaniste, se completează reciproc.",
+          "wer": 0.625,
+          "duration_s": 4.31,
+          "generation_time_s": 0.74,
+          "wav_file": "speaker_female_adr/sample_03.wav"
+        },
+        {
+          "sentence_idx": 4,
+          "original_text": "Copiii se jucau fericiți în grădina plină de flori colorate.",
+          "transcription": "Copiii se jucau fericit când în grădina plină de flori colorate.",
+          "wer": 0.2,
+          "duration_s": 3.95,
+          "generation_time_s": 0.68,
+          "wav_file": "speaker_female_adr/sample_04.wav"
+        },
+        {
+          "sentence_idx": 5,
+          "original_text": "Profesorul a explicat cu răbdare lecția dificilă de matematică.",
+          "transcription": "Profesorul a explicat cu răbdarele cunjia dificilă de matematică.",
+          "wer": 0.2222,
+          "duration_s": 4.27,
+          "generation_time_s": 0.74,
+          "wav_file": "speaker_female_adr/sample_05.wav"
+        },
+        {
+          "sentence_idx": 6,
+          "original_text": "Muzica populară românească are ritmuri și melodii unice în lume.",
+          "transcription": "Muzica populară românească are ritmuri conși melodii unice în lume.",
+          "wer": 0.1,
+          "duration_s": 4.82,
+          "generation_time_s": 0.83,
+          "wav_file": "speaker_female_adr/sample_06.wav"
+        },
+        {
+          "sentence_idx": 7,
+          "original_text": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "transcription": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "wer": 0.0,
+          "duration_s": 4.82,
+          "generation_time_s": 0.83,
+          "wav_file": "speaker_female_adr/sample_07.wav"
+        }
+      ]
+    },
+    {
+      "voice": "speaker_female_hp",
+      "reference_wav": "reference-voices/speaker_female_hp.wav",
+      "average_wer": 0.2152,
+      "sentences": [
+        {
+          "sentence_idx": 0,
+          "original_text": "Bună ziua, mă numesc Alexandru și sunt din București.",
+          "transcription": "Bună ziua! Mă numesc Alexandru Conș, sunt din București.",
+          "wer": 0.2222,
+          "duration_s": 5.1,
+          "generation_time_s": 0.88,
+          "wav_file": "speaker_female_hp/sample_00.wav"
+        },
+        {
+          "sentence_idx": 1,
+          "original_text": "România este o țară frumoasă cu munți înalți și câmpii întinse.",
+          "transcription": "România este o conoară frumoasă cu mângurii în alc și colmi câmpii întinzi.",
+          "wer": 0.5455,
+          "duration_s": 6.31,
+          "generation_time_s": 1.07,
+          "wav_file": "speaker_female_hp/sample_01.wav"
+        },
+        {
+          "sentence_idx": 2,
+          "original_text": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.",
+          "transcription": "Într-o dimineață de toamnă, frunzele cădeau ugnor pe aleea din par.",
+          "wer": 0.1818,
+          "duration_s": 5.47,
+          "generation_time_s": 0.95,
+          "wav_file": "speaker_female_hp/sample_02.wav"
+        },
+        {
+          "sentence_idx": 3,
+          "original_text": "Științele exacte și cele umaniste se completează reciproc.",
+          "transcription": "Contingunele exacte cu cele umaniste se completează reciproc.",
+          "wer": 0.25,
+          "duration_s": 5.24,
+          "generation_time_s": 0.9,
+          "wav_file": "speaker_female_hp/sample_03.wav"
+        },
+        {
+          "sentence_idx": 4,
+          "original_text": "Copiii se jucau fericiți în grădina plină de flori colorate.",
+          "transcription": "Copiii se jucau fericic în grădina plină de flori colorate.",
+          "wer": 0.1,
+          "duration_s": 5.85,
+          "generation_time_s": 1.01,
+          "wav_file": "speaker_female_hp/sample_04.wav"
+        },
+        {
+          "sentence_idx": 5,
+          "original_text": "Profesorul a explicat cu răbdare lecția dificilă de matematică.",
+          "transcription": "Profesorul a explicat cu răbdare lecungia, dificilă de matematică.",
+          "wer": 0.1111,
+          "duration_s": 5.01,
+          "generation_time_s": 0.87,
+          "wav_file": "speaker_female_hp/sample_05.wav"
+        },
+        {
+          "sentence_idx": 6,
+          "original_text": "Muzica populară românească are ritmuri și melodii unice în lume.",
+          "transcription": "Muzica populară românească are ritmuri, conti melodii unice în lume.",
+          "wer": 0.2,
+          "duration_s": 5.29,
+          "generation_time_s": 0.91,
+          "wav_file": "speaker_female_hp/sample_06.wav"
+        },
+        {
+          "sentence_idx": 7,
+          "original_text": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "transcription": "Această carte reprezintă o contribuie importantă la literatura contemporană.",
+          "wer": 0.1111,
+          "duration_s": 5.89,
+          "generation_time_s": 1.01,
+          "wav_file": "speaker_female_hp/sample_07.wav"
+        }
+      ]
+    },
+    {
+      "voice": "speaker_male_4",
+      "reference_wav": "reference-voices/speaker_male_4.wav",
+      "average_wer": 0.335,
+      "sentences": [
+        {
+          "sentence_idx": 0,
+          "original_text": "Bună ziua, mă numesc Alexandru și sunt din București.",
+          "transcription": "Bună ziua! Mă numesc Alexandru Concii, sunt din București, Cântila Tarnă.",
+          "wer": 0.5556,
+          "duration_s": 5.19,
+          "generation_time_s": 0.88,
+          "wav_file": "speaker_male_4/sample_00.wav"
+        },
+        {
+          "sentence_idx": 1,
+          "original_text": "România este o țară frumoasă cu munți înalți și câmpii întinse.",
+          "transcription": "România este o concară frumoasă, cum un colenac conalc, câmpia-i câmpii întins.",
+          "wer": 0.7273,
+          "duration_s": 5.8,
+          "generation_time_s": 0.99,
+          "wav_file": "speaker_male_4/sample_01.wav"
+        },
+        {
+          "sentence_idx": 2,
+          "original_text": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.",
+          "transcription": "Într-o diminea conă de toamnă, frunzele cădeau uc nori pe aleea din parc.",
+          "wer": 0.3636,
+          "duration_s": 4.6,
+          "generation_time_s": 0.8,
+          "wav_file": "speaker_male_4/sample_02.wav"
+        },
+        {
+          "sentence_idx": 3,
+          "original_text": "Științele exacte și cele umaniste se completează reciproc.",
+          "transcription": "conting ramele exacte conii cele umaniste, se completează reciproc.",
+          "wer": 0.5,
+          "duration_s": 4.68,
+          "generation_time_s": 0.81,
+          "wav_file": "speaker_male_4/sample_03.wav"
+        },
+        {
+          "sentence_idx": 4,
+          "original_text": "Copiii se jucau fericiți în grădina plină de flori colorate.",
+          "transcription": "Copiii se jucau fericicuni în grădina plină de flori colorate.",
+          "wer": 0.1,
+          "duration_s": 4.09,
+          "generation_time_s": 0.71,
+          "wav_file": "speaker_male_4/sample_04.wav"
+        },
+        {
+          "sentence_idx": 5,
+          "original_text": "Profesorul a explicat cu răbdare lecția dificilă de matematică.",
+          "transcription": "Profesorul a explicat cu răbdarele congea dificilă de matematică.",
+          "wer": 0.2222,
+          "duration_s": 4.64,
+          "generation_time_s": 0.8,
+          "wav_file": "speaker_male_4/sample_05.wav"
+        },
+        {
+          "sentence_idx": 6,
+          "original_text": "Muzica populară românească are ritmuri și melodii unice în lume.",
+          "transcription": "Muzica populară românească are ritmuri conși, melodii unice în lume.",
+          "wer": 0.1,
+          "duration_s": 5.19,
+          "generation_time_s": 0.89,
+          "wav_file": "speaker_male_4/sample_06.wav"
+        },
+        {
+          "sentence_idx": 7,
+          "original_text": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "transcription": "Această carte reprezintă o contribuie importantă la literatura contemporană.",
+          "wer": 0.1111,
+          "duration_s": 5.15,
+          "generation_time_s": 0.88,
+          "wav_file": "speaker_male_4/sample_07.wav"
+        }
+      ]
+    },
+    {
+      "voice": "speaker_male_bible",
+      "reference_wav": "reference-voices/speaker_male_bible.wav",
+      "average_wer": 0.2807,
+      "sentences": [
+        {
+          "sentence_idx": 0,
+          "original_text": "Bună ziua, mă numesc Alexandru și sunt din București.",
+          "transcription": "\"- Bună ziua, mă numesc Alexandru Coni și sunt din București cu Niche.\"",
+          "wer": 0.5556,
+          "duration_s": 4.68,
+          "generation_time_s": 0.8,
+          "wav_file": "speaker_male_bible/sample_00.wav"
+        },
+        {
+          "sentence_idx": 1,
+          "original_text": "România este o țară frumoasă cu munți înalți și câmpii întinse.",
+          "transcription": "România este o conoară frumoasă cumuloasă cu melg, galar, iar gând în analog câmpii întinse.",
+          "wer": 0.7273,
+          "duration_s": 8.12,
+          "generation_time_s": 1.38,
+          "wav_file": "speaker_male_bible/sample_01.wav"
+        },
+        {
+          "sentence_idx": 2,
+          "original_text": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.",
+          "transcription": "Într-o dimineață de toamnă, frunzele cădeau ucunor pe aleea din parc.",
+          "wer": 0.0909,
+          "duration_s": 5.01,
+          "generation_time_s": 0.86,
+          "wav_file": "speaker_male_bible/sample_02.wav"
+        },
+        {
+          "sentence_idx": 3,
+          "original_text": "Științele exacte și cele umaniste se completează reciproc.",
+          "transcription": "Continuișele exacte coni cele umaniste se completează reciproc.",
+          "wer": 0.25,
+          "duration_s": 4.87,
+          "generation_time_s": 0.84,
+          "wav_file": "speaker_male_bible/sample_03.wav"
+        },
+        {
+          "sentence_idx": 4,
+          "original_text": "Copiii se jucau fericiți în grădina plină de flori colorate.",
+          "transcription": "Copiii se jucau ferici cu ea în grădina plină de flori colorate.",
+          "wer": 0.3,
+          "duration_s": 4.78,
+          "generation_time_s": 0.82,
+          "wav_file": "speaker_male_bible/sample_04.wav"
+        },
+        {
+          "sentence_idx": 5,
+          "original_text": "Profesorul a explicat cu răbdare lecția dificilă de matematică.",
+          "transcription": "Profesorul a explicat cu răbdare lecundia dificilă de matematică.",
+          "wer": 0.1111,
+          "duration_s": 5.01,
+          "generation_time_s": 0.85,
+          "wav_file": "speaker_male_bible/sample_05.wav"
+        },
+        {
+          "sentence_idx": 6,
+          "original_text": "Muzica populară românească are ritmuri și melodii unice în lume.",
+          "transcription": "Muzica populară românească are ritmuri conci, melodii unice în lume.",
+          "wer": 0.1,
+          "duration_s": 5.75,
+          "generation_time_s": 0.98,
+          "wav_file": "speaker_male_bible/sample_06.wav"
+        },
+        {
+          "sentence_idx": 7,
+          "original_text": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "transcription": "Această carte reprezintă o contribuie importantă la literatura contemporană.",
+          "wer": 0.1111,
+          "duration_s": 5.53,
+          "generation_time_s": 0.94,
+          "wav_file": "speaker_male_bible/sample_07.wav"
+        }
+      ]
+    },
+    {
+      "voice": "speaker_male_literature",
+      "reference_wav": "reference-voices/speaker_male_literature.wav",
+      "average_wer": 0.2803,
+      "sentences": [
+        {
+          "sentence_idx": 0,
+          "original_text": "Bună ziua, mă numesc Alexandru și sunt din București.",
+          "transcription": "Bună ziua! Mă numesc Alexandru Congi. Sunt din București.",
+          "wer": 0.2222,
+          "duration_s": 5.06,
+          "generation_time_s": 0.87,
+          "wav_file": "speaker_male_literature/sample_00.wav"
+        },
+        {
+          "sentence_idx": 1,
+          "original_text": "România este o țară frumoasă cu munți înalți și câmpii întinse.",
+          "transcription": "România este o conoară frumoasă cu munci, în alcuni colși câmpii întinse.",
+          "wer": 0.4545,
+          "duration_s": 5.71,
+          "generation_time_s": 0.98,
+          "wav_file": "speaker_male_literature/sample_01.wav"
+        },
+        {
+          "sentence_idx": 2,
+          "original_text": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.",
+          "transcription": "Într-o diminea consă de toamnă, frunzele cădeau uc nori pe aleia din parc.",
+          "wer": 0.4545,
+          "duration_s": 4.92,
+          "generation_time_s": 0.85,
+          "wav_file": "speaker_male_literature/sample_02.wav"
+        },
+        {
+          "sentence_idx": 3,
+          "original_text": "Științele exacte și cele umaniste se completează reciproc.",
+          "transcription": "Contingoane exacte, cu încicele umaniste se completează reciproc.",
+          "wer": 0.5,
+          "duration_s": 5.06,
+          "generation_time_s": 0.85,
+          "wav_file": "speaker_male_literature/sample_03.wav"
+        },
+        {
+          "sentence_idx": 4,
+          "original_text": "Copiii se jucau fericiți în grădina plină de flori colorate.",
+          "transcription": "Copiii se jucau fericicuni în grădina plină de flori colorate.",
+          "wer": 0.1,
+          "duration_s": 4.74,
+          "generation_time_s": 0.81,
+          "wav_file": "speaker_male_literature/sample_04.wav"
+        },
+        {
+          "sentence_idx": 5,
+          "original_text": "Profesorul a explicat cu răbdare lecția dificilă de matematică.",
+          "transcription": "Profesorul a explicat cu răbdare lecundia dificilă de matematică.",
+          "wer": 0.1111,
+          "duration_s": 5.53,
+          "generation_time_s": 0.94,
+          "wav_file": "speaker_male_literature/sample_05.wav"
+        },
+        {
+          "sentence_idx": 6,
+          "original_text": "Muzica populară românească are ritmuri și melodii unice în lume.",
+          "transcription": "Muzica populară românească are ritmuri, cum cel melodiu unice în lume.",
+          "wer": 0.4,
+          "duration_s": 5.15,
+          "generation_time_s": 0.88,
+          "wav_file": "speaker_male_literature/sample_06.wav"
+        },
+        {
+          "sentence_idx": 7,
+          "original_text": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "transcription": "Această carte reprezintă o contribuție importantă la literatura contemporană.",
+          "wer": 0.0,
+          "duration_s": 6.22,
+          "generation_time_s": 1.06,
+          "wav_file": "speaker_male_literature/sample_07.wav"
+        }
+      ]
+    }
+  ],
+  "overall_average_wer": 0.2719
+}

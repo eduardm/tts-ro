@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tts-ro — Romanian TTS Samples</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  h1 a { color: var(--text); text-decoration: none; }
+  h1 a:hover { color: var(--accent); }
+  .subtitle { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .subtitle a { color: var(--accent); text-decoration: none; }
+  .subtitle a:hover { text-decoration: underline; }
+
+  /* Summary table */
+  .summary { margin-bottom: 2.5rem; }
+  .summary h2 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+  .summary table { width: 100%; border-collapse: collapse; }
+  .summary th, .summary td {
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary th { color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+  .summary tr:last-child td { border-bottom: 2px solid var(--border); font-weight: 600; }
+
+  /* WER badges */
+  .wer { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .wer-good { color: var(--green); }
+  .wer-working { color: var(--yellow); }
+  .wer-bad { color: var(--red); }
+
+  /* Voice sections */
+  .voice-section { margin-bottom: 2rem; }
+  .voice-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .voice-header:hover { border-color: var(--accent); }
+  .voice-header h3 { font-size: 1rem; }
+  .voice-header .wer-badge {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    background: var(--bg);
+  }
+  .voice-header .arrow { transition: transform 0.2s; color: var(--text-muted); }
+  .voice-header.collapsed .arrow { transform: rotate(-90deg); }
+
+  .voice-body {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+  .voice-body.hidden { display: none; }
+
+  .sentence-table { width: 100%; border-collapse: collapse; }
+  .sentence-table th, .sentence-table td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+  .sentence-table th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+  }
+  .sentence-table tr:last-child td { border-bottom: none; }
+  .sentence-table td:first-child { text-align: center; color: var(--text-muted); width: 2.5rem; }
+  .sentence-table td:nth-child(4) { text-align: center; width: 4.5rem; }
+  .sentence-table td:nth-child(5) { width: 3.5rem; text-align: center; }
+  .sentence-table th:nth-child(4) { text-align: center; }
+  .sentence-table th:nth-child(5) { text-align: center; }
+
+  .text-col { max-width: 350px; }
+  .diff-word { color: var(--red); text-decoration: underline; }
+
+  audio { width: 2.5rem; height: 2rem; }
+  audio::-webkit-media-controls-panel { background: var(--surface); }
+
+  /* Play button */
+  .play-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    transition: all 0.15s;
+  }
+  .play-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .play-btn.playing { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .play-btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+  .method-note {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .method-note a { color: var(--accent); text-decoration: none; }
+  .method-note a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    body { padding: 1rem 0.5rem; }
+    .text-col { max-width: 200px; font-size: 0.8rem; }
+    .sentence-table th, .sentence-table td { padding: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1><a href="https://github.com/eduardm/tts-ro">tts-ro</a></h1>
+<p class="subtitle">
+  Fine-tuning TTS models for Romanian &mdash; XTTS-v2, Epoch 15 evaluation<br>
+  <a href="https://github.com/eduardm/tts-ro">GitHub</a> &middot;
+  <a href="https://github.com/eduardm/tts-ro/blob/main/docs/methodology.md">Methodology</a> &middot;
+  <a href="https://github.com/eduardm/tts-ro/blob/main/models/xtts-v2/README.md">Training Details</a>
+</p>
+
+<div class="summary">
+  <h2>Overall Results</h2>
+  <table>
+    <thead>
+      <tr><th>Voice</th><th>Avg WER</th><th>Quality</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Female 1</td><td class="wer wer-good">21.5%</td><td>Good</td></tr>
+      <tr><td>Female 2</td><td class="wer wer-good">24.8%</td><td>Good</td></tr>
+      <tr><td>Male 1</td><td class="wer wer-good">28.0%</td><td>Good</td></tr>
+      <tr><td>Male 2</td><td class="wer wer-good">28.1%</td><td>Good</td></tr>
+      <tr><td>Male 3</td><td class="wer wer-working">33.5%</td><td>Working</td></tr>
+      <tr><td>Overall</td><td class="wer wer-good">27.2%</td><td>Good</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="voices"></div>
+
+<div class="method-note">
+  <strong>How WER is measured:</strong> Each sentence is fed to XTTS-v2 which generates audio.
+  The audio is then transcribed by <a href="https://github.com/openai/whisper">Whisper large-v3</a> and compared word-by-word
+  against the original input. WER = edit_distance / reference_words. Lower is better.
+  &lt;30% = Good, 30-50% = Working, &gt;50% = Needs training.
+</div>
+
+<script>
+const VOICE_NAMES = {
+  'speaker_female_hp': 'Female 1',
+  'speaker_female_adr': 'Female 2',
+  'speaker_male_literature': 'Male 1',
+  'speaker_male_bible': 'Male 2',
+  'speaker_male_4': 'Male 3'
+};
+
+const VOICE_ORDER = [
+  'speaker_female_hp',
+  'speaker_female_adr',
+  'speaker_male_literature',
+  'speaker_male_bible',
+  'speaker_male_4'
+];
+
+const AUDIO_BASE = '../models/xtts-v2/results/epoch-15/samples/';
+
+const DATA = {
+  "speaker_female_hp": {
+    "average_wer": 0.2152,
+    "sentences": [
+      {"idx": 0, "original": "Bună ziua, mă numesc Alexandru și sunt din București.", "transcription": "Bună ziua! Mă numesc Alexandru Conș, sunt din București.", "wer": 0.2222, "wav": "speaker_female_hp/sample_00.wav"},
+      {"idx": 1, "original": "România este o țară frumoasă cu munți înalți și câmpii întinse.", "transcription": "România este o conoară frumoasă cu mângurii în alc și colmi câmpii întinzi.", "wer": 0.5455, "wav": "speaker_female_hp/sample_01.wav"},
+      {"idx": 2, "original": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.", "transcription": "Într-o dimineață de toamnă, frunzele cădeau ugnor pe aleea din par.", "wer": 0.1818, "wav": "speaker_female_hp/sample_02.wav"},
+      {"idx": 3, "original": "Științele exacte și cele umaniste se completează reciproc.", "transcription": "Contingunele exacte cu cele umaniste se completează reciproc.", "wer": 0.25, "wav": "speaker_female_hp/sample_03.wav"},
+      {"idx": 4, "original": "Copiii se jucau fericiți în grădina plină de flori colorate.", "transcription": "Copiii se jucau fericic în grădina plină de flori colorate.", "wer": 0.1, "wav": "speaker_female_hp/sample_04.wav"},
+      {"idx": 5, "original": "Profesorul a explicat cu răbdare lecția dificilă de matematică.", "transcription": "Profesorul a explicat cu răbdare lecungia, dificilă de matematică.", "wer": 0.1111, "wav": "speaker_female_hp/sample_05.wav"},
+      {"idx": 6, "original": "Muzica populară românească are ritmuri și melodii unice în lume.", "transcription": "Muzica populară românească are ritmuri, conti melodii unice în lume.", "wer": 0.2, "wav": "speaker_female_hp/sample_06.wav"},
+      {"idx": 7, "original": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "transcription": "Această carte reprezintă o contribuie importantă la literatura contemporană.", "wer": 0.1111, "wav": "speaker_female_hp/sample_07.wav"}
+    ]
+  },
+  "speaker_female_adr": {
+    "average_wer": 0.2482,
+    "sentences": [
+      {"idx": 0, "original": "Bună ziua, mă numesc Alexandru și sunt din București.", "transcription": "Bună ziua, mă numesc Alexandru Conș, sunt din București.", "wer": 0.1111, "wav": "speaker_female_adr/sample_00.wav"},
+      {"idx": 1, "original": "România este o țară frumoasă cu munți înalți și câmpii întinse.", "transcription": "România este o conoară frumoasă cu mâncări călmei în alcări și câmpii întinse.", "wer": 0.4545, "wav": "speaker_female_adr/sample_01.wav"},
+      {"idx": 2, "original": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.", "transcription": "Într-o diminea cândă de toamnă, frunzele cădeau ucnori pe aleea din parc.", "wer": 0.2727, "wav": "speaker_female_adr/sample_02.wav"},
+      {"idx": 3, "original": "Științele exacte și cele umaniste se completează reciproc.", "transcription": "condiindă la exacte concile umaniste, se completează reciproc.", "wer": 0.625, "wav": "speaker_female_adr/sample_03.wav"},
+      {"idx": 4, "original": "Copiii se jucau fericiți în grădina plină de flori colorate.", "transcription": "Copiii se jucau fericit când în grădina plină de flori colorate.", "wer": 0.2, "wav": "speaker_female_adr/sample_04.wav"},
+      {"idx": 5, "original": "Profesorul a explicat cu răbdare lecția dificilă de matematică.", "transcription": "Profesorul a explicat cu răbdarele cunjia dificilă de matematică.", "wer": 0.2222, "wav": "speaker_female_adr/sample_05.wav"},
+      {"idx": 6, "original": "Muzica populară românească are ritmuri și melodii unice în lume.", "transcription": "Muzica populară românească are ritmuri conși melodii unice în lume.", "wer": 0.1, "wav": "speaker_female_adr/sample_06.wav"},
+      {"idx": 7, "original": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "transcription": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "wer": 0.0, "wav": "speaker_female_adr/sample_07.wav"}
+    ]
+  },
+  "speaker_male_literature": {
+    "average_wer": 0.2803,
+    "sentences": [
+      {"idx": 0, "original": "Bună ziua, mă numesc Alexandru și sunt din București.", "transcription": "Bună ziua! Mă numesc Alexandru Congi. Sunt din București.", "wer": 0.2222, "wav": "speaker_male_literature/sample_00.wav"},
+      {"idx": 1, "original": "România este o țară frumoasă cu munți înalți și câmpii întinse.", "transcription": "România este o conoară frumoasă cu munci, în algunos colși câmpii întinse.", "wer": 0.4545, "wav": "speaker_male_literature/sample_01.wav"},
+      {"idx": 2, "original": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.", "transcription": "Într-o diminea consă de toamnă, frunzele cădeau uc nori pe aleia din parc.", "wer": 0.4545, "wav": "speaker_male_literature/sample_02.wav"},
+      {"idx": 3, "original": "Științele exacte și cele umaniste se completează reciproc.", "transcription": "Contingoane exacte, cu încicele umaniste se completează reciproc.", "wer": 0.5, "wav": "speaker_male_literature/sample_03.wav"},
+      {"idx": 4, "original": "Copiii se jucau fericiți în grădina plină de flori colorate.", "transcription": "Copiii se jucau fericicuni în grădina plină de flori colorate.", "wer": 0.1, "wav": "speaker_male_literature/sample_04.wav"},
+      {"idx": 5, "original": "Profesorul a explicat cu răbdare lecția dificilă de matematică.", "transcription": "Profesorul a explicat cu răbdare lecundia dificilă de matematică.", "wer": 0.1111, "wav": "speaker_male_literature/sample_05.wav"},
+      {"idx": 6, "original": "Muzica populară românească are ritmuri și melodii unice în lume.", "transcription": "Muzica populară românească are ritmuri, cum cel melodiu unice în lume.", "wer": 0.4, "wav": "speaker_male_literature/sample_06.wav"},
+      {"idx": 7, "original": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "transcription": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "wer": 0.0, "wav": "speaker_male_literature/sample_07.wav"}
+    ]
+  },
+  "speaker_male_bible": {
+    "average_wer": 0.2807,
+    "sentences": [
+      {"idx": 0, "original": "Bună ziua, mă numesc Alexandru și sunt din București.", "transcription": "\"- Bună ziua, mă numesc Alexandru Coni și sunt din București cu Niche.\"", "wer": 0.5556, "wav": "speaker_male_bible/sample_00.wav"},
+      {"idx": 1, "original": "România este o țară frumoasă cu munți înalți și câmpii întinse.", "transcription": "România este o conoară frumoasă cumuloasă cu melg, galar, iar gând în analog câmpii întinse.", "wer": 0.7273, "wav": "speaker_male_bible/sample_01.wav"},
+      {"idx": 2, "original": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.", "transcription": "Într-o dimineață de toamnă, frunzele cădeau ucunor pe aleea din parc.", "wer": 0.0909, "wav": "speaker_male_bible/sample_02.wav"},
+      {"idx": 3, "original": "Științele exacte și cele umaniste se completează reciproc.", "transcription": "Continuișele exacte coni cele umaniste se completează reciproc.", "wer": 0.25, "wav": "speaker_male_bible/sample_03.wav"},
+      {"idx": 4, "original": "Copiii se jucau fericiți în grădina plină de flori colorate.", "transcription": "Copiii se jucau ferici cu ea în grădina plină de flori colorate.", "wer": 0.3, "wav": "speaker_male_bible/sample_04.wav"},
+      {"idx": 5, "original": "Profesorul a explicat cu răbdare lecția dificilă de matematică.", "transcription": "Profesorul a explicat cu răbdare lecundia dificilă de matematică.", "wer": 0.1111, "wav": "speaker_male_bible/sample_05.wav"},
+      {"idx": 6, "original": "Muzica populară românească are ritmuri și melodii unice în lume.", "transcription": "Muzica populară românească are ritmuri conci, melodii unice în lume.", "wer": 0.1, "wav": "speaker_male_bible/sample_06.wav"},
+      {"idx": 7, "original": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "transcription": "Această carte reprezintă o contribuie importantă la literatura contemporană.", "wer": 0.1111, "wav": "speaker_male_bible/sample_07.wav"}
+    ]
+  },
+  "speaker_male_4": {
+    "average_wer": 0.335,
+    "sentences": [
+      {"idx": 0, "original": "Bună ziua, mă numesc Alexandru și sunt din București.", "transcription": "Bună ziua! Mă numesc Alexandru Concii, sunt din București, Cântila Tarnă.", "wer": 0.5556, "wav": "speaker_male_4/sample_00.wav"},
+      {"idx": 1, "original": "România este o țară frumoasă cu munți înalți și câmpii întinse.", "transcription": "România este o concară frumoasă, cum un colenac conalc, câmpia-i câmpii întins.", "wer": 0.7273, "wav": "speaker_male_4/sample_01.wav"},
+      {"idx": 2, "original": "Într-o dimineață de toamnă, frunzele cădeau ușor pe aleea din parc.", "transcription": "Într-o diminea conă de toamnă, frunzele cădeau uc nori pe aleea din parc.", "wer": 0.3636, "wav": "speaker_male_4/sample_02.wav"},
+      {"idx": 3, "original": "Științele exacte și cele umaniste se completează reciproc.", "transcription": "conting ramele exacte conii cele umaniste, se completează reciproc.", "wer": 0.5, "wav": "speaker_male_4/sample_03.wav"},
+      {"idx": 4, "original": "Copiii se jucau fericiți în grădina plină de flori colorate.", "transcription": "Copiii se jucau fericicuni în grădina plină de flori colorate.", "wer": 0.1, "wav": "speaker_male_4/sample_04.wav"},
+      {"idx": 5, "original": "Profesorul a explicat cu răbdare lecția dificilă de matematică.", "transcription": "Profesorul a explicat cu răbdarele congea dificilă de matematică.", "wer": 0.2222, "wav": "speaker_male_4/sample_05.wav"},
+      {"idx": 6, "original": "Muzica populară românească are ritmuri și melodii unice în lume.", "transcription": "Muzica populară românească are ritmuri conși, melodii unice în lume.", "wer": 0.1, "wav": "speaker_male_4/sample_06.wav"},
+      {"idx": 7, "original": "Această carte reprezintă o contribuție importantă la literatura contemporană.", "transcription": "Această carte reprezintă o contribuie importantă la literatura contemporană.", "wer": 0.1111, "wav": "speaker_male_4/sample_07.wav"}
+    ]
+  }
+};
+
+function werClass(wer) {
+  if (wer < 0.3) return 'wer-good';
+  if (wer < 0.5) return 'wer-working';
+  return 'wer-bad';
+}
+
+function formatWer(wer) {
+  return (wer * 100).toFixed(1) + '%';
+}
+
+let currentAudio = null;
+let currentBtn = null;
+
+function playAudio(btn, src) {
+  if (currentAudio && currentBtn === btn) {
+    currentAudio.pause();
+    currentAudio = null;
+    btn.classList.remove('playing');
+    btn.innerHTML = '<svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>';
+    currentBtn = null;
+    return;
+  }
+  if (currentAudio) {
+    currentAudio.pause();
+    if (currentBtn) {
+      currentBtn.classList.remove('playing');
+      currentBtn.innerHTML = '<svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>';
+    }
+  }
+  const audio = new Audio(src);
+  currentAudio = audio;
+  currentBtn = btn;
+  btn.classList.add('playing');
+  btn.innerHTML = '<svg viewBox="0 0 16 16"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>';
+  audio.play();
+  audio.onended = () => {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>';
+    currentAudio = null;
+    currentBtn = null;
+  };
+}
+
+function toggleVoice(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('hidden');
+  header.classList.toggle('collapsed');
+}
+
+const container = document.getElementById('voices');
+
+VOICE_ORDER.forEach((voiceKey) => {
+  const voice = DATA[voiceKey];
+  const name = VOICE_NAMES[voiceKey];
+  const avgWer = voice.average_wer;
+
+  const section = document.createElement('div');
+  section.className = 'voice-section';
+
+  const header = document.createElement('div');
+  header.className = 'voice-header';
+  header.onclick = () => toggleVoice(header);
+  header.innerHTML = `
+    <h3>${name}</h3>
+    <div>
+      <span class="wer-badge wer ${werClass(avgWer)}">Avg WER: ${formatWer(avgWer)}</span>
+      <span class="arrow"> ▼</span>
+    </div>
+  `;
+
+  const body = document.createElement('div');
+  body.className = 'voice-body';
+
+  let rows = '';
+  voice.sentences.forEach((s) => {
+    rows += `
+      <tr>
+        <td>${s.idx + 1}</td>
+        <td class="text-col">${s.original}</td>
+        <td class="text-col">${s.transcription}</td>
+        <td><span class="wer ${werClass(s.wer)}">${formatWer(s.wer)}</span></td>
+        <td>
+          <button class="play-btn" onclick="playAudio(this, '${AUDIO_BASE}${s.wav}')" title="Play">
+            <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+          </button>
+        </td>
+      </tr>`;
+  });
+
+  body.innerHTML = `
+    <table class="sentence-table">
+      <thead>
+        <tr><th>#</th><th>Input Text</th><th>Whisper Transcription</th><th>WER</th><th></th></tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  section.appendChild(header);
+  section.appendChild(body);
+  container.appendChild(section);
+});
+</script>
+
+</body>
+</html>
