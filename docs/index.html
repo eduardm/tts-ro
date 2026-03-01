@@ -200,11 +200,7 @@ const VOICE_ORDER = [
   'speaker_male_4'
 ];
 
-// Detect base path: works both locally (../models/...) and on GitHub Pages (/tts-ro/models/...)
-const IS_GITHUB_PAGES = location.hostname.endsWith('github.io');
-const AUDIO_BASE = IS_GITHUB_PAGES
-  ? '/tts-ro/models/xtts-v2/results/epoch-15/samples/'
-  : '../models/xtts-v2/results/epoch-15/samples/';
+const AUDIO_BASE = 'samples/';
 
 const DATA = {
   "speaker_female_hp": {
